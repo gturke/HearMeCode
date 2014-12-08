@@ -1,0 +1,103 @@
+# Peanut Butter Jelly Time!
+
+# First Goal: Create a program that can tell you whether or not you can make a peanut butter and jelly sandwich
+
+#Required: 2 bread, 2 pb, 1 jelly
+print ("Supplies needed to build a delicious peanut butter and jelly sandwich:\ntwo slices of bread, two tablespoons of peanut butter, and one tablespoon of jelly.\n")
+
+quant_pb= raw_input("How many tablespoons of peanut butter do you have?")
+quant_jelly= raw_input("How many tablespoons of jelly do you have?")
+quant_bread= raw_input("How many slices of bread do you have?")
+
+#print quant_pb, quant_jelly, quant_bread
+
+"""
+for i in (quant_pb, quant_jelly, quant_bread):
+     i = float(i)
+print quant_pb, type(quant_pb)""" ##Why are the changes to the variable not lasting?
+
+quant_pb = float(quant_pb)
+quant_jelly = float(quant_jelly)
+quant_bread = float(quant_bread)
+
+#print quant_pb, quant_jelly, quant_bread
+
+if quant_pb>=2.0 and quant_jelly>=1.0 and quant_bread>=2.0:
+     print ("Great!  You have what you need!")
+else:
+     print "You don't have enough ingredients to make a full PB&J sandwich.  How sad for you!!"
+
+"""
+elif quant_pb>=2 and quant_jelly<1 and quant_bread<2:
+     print("You do not have what you need.  You have enough peanut butter,\nbut you need {0} more tablespoon(s) of jelly and {1} more slice(s) of bread.\nYou can make a peanut butter sandwich without jelly, but you should TAKE A LONG HARD LOOK AT YOUR LIFE AND YOUR CHOICES!").format(2-quant_jelly,2-quant_bread)
+elif quant_pb<2 and quant_jelly>=1 and quant_bread<2:
+     print("You do not have what you need.  You have enough jelly,\nbut you need {0} more tablespoon(s) of peanut butter and {1} more slice(s) of bread.").format(2-quant_pb,2-quant_bread)
+elif quant_pb<2 and quant_jelly<1 and quant_bread>=2:
+     print("You do not have what you need.  You have enough bread,\nbut you need {0} more tablespoon(s) of peanut butter and {1} more tablespoon(s) of jelly.").format(2-quant_pb,2-quant_jelly)
+elif quant_pb>=2 and quant_jelly>=1 and quant_bread<2:
+     print("You do not have what you need.  You have enough peanut butter and jelly, but you need {0} more slice(s) of bread.").format(2-quant_bread)
+     if quant_bread==1:
+          print "But, you can make an open-faced sandwich."
+elif quant_pb>=2 and quant_jelly<1 and quant_bread>=2:
+     print("You do not have what you need.  You have enough peanut butter and bread, but you need {0} more tablespoon(s) of jelly.").format(1-quant_jelly)
+elif quant_pb<2 and quant_jelly>=1 and quant_bread>=2:
+     print("You do not have what you need.  You have enough jelly and bread, but you need {0} more tablespoon(s) of peanut butter.").format(2-quant_pb)
+else:
+     print("You do not have what you need.")
+"""
+
+# Second Goal: Modify that program to tell you: if you can make a sandwich, how many you can make
+# Third Goal: Modify that program to allow you to make open-face sandwiches if you have an odd number of slices of bread ( )
+
+pb = quant_pb*0.5
+jelly = quant_jelly*1.0
+
+"""
+##This doesn't really work.  Should default to closed sandwiches then only make 1 extra if there's a remainder.
+if quant_bread % 2==0:
+     bread = quant_bread*0.5 
+     sand_type = "regular"
+else:
+     bread = quant_bread
+     sand_type = "open faced"
+
+sandwiches = min(pb, jelly,bread)
+sandwiches = int(sandwiches)
+"""
+
+bread = quant_bread*0.5 
+
+if quant_bread % 2==1:
+     bread_leftover = 1
+else:
+     bread_leftover = 0
+
+sandwiches = min(pb, jelly,bread)
+sandwiches = int(sandwiches)
+
+##Add syntax to figure out if we have enough peanut butter & jelly to make an open-faced sandwich after making out regular sandwiches.
+pb_leftover = quant_pb-sandwiches*2
+jelly_leftover = quant_jelly-sandwiches
+
+if bread_leftover==1 and jelly_leftover>=1 and pb_leftover>=2:
+     open_faced=1
+else:
+     open_faced=0
+
+if sandwiches==0 and open_faced==1:
+     print "You only have enough to make an open-faced sandwich. :( Time to go grocery shopping!!"
+elif sandwiches ==1 and open_faced ==0:
+     print "You have enough to make exactly one sandwich."
+elif sandwiches == 1 and open_faced ==1:
+     print "You have enough to make one regular sandwich and one open-faced sandwich."
+elif sandwiches >=2 and open_faced ==0:
+	print "You have enough to make %s sandwiches." %(sandwiches)
+elif sandwiches >=2 and open_faced ==1:
+	print "You have enough to make %s sandwiches and one open-faced sandwich." %(sandwiches)
+else:
+	print "You cannot make a sandwich."
+
+# Fourth Goal: Modify that program to tell you: if you're missing ingredients, which ones you need to be able to make your sandwiches
+# Fifth Goal: Modify that program to tell you: if you have enough bread and peanut butter but no jelly, that you can make a peanut butter sandwich but you should take a hard, honest look at your life.  Wow, your program is kinda judgy.
+
+print "THE END!  YOU WROTE YOUR FIRST PROGRAM!"
