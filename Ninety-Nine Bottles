@@ -1,0 +1,22 @@
+#Can you make Python print out the song for 99 bottles of beer on the wall?
+
+""" My method: while loop with iteration
+beers=99
+
+while beers >2:
+     print "%s bottles of beer on the wall, %s bottles of beer!\nTake one down, pass it around, %s bottles of beer on the wall!" %(beers, beers, beers-1)
+     beers -=1
+print "2 bottles of beer on the wall, 2 bottes of beer!\nTake one down, pass it around 1 bottle of beer on the wall."
+print "1 bottle of beer on the wall, 1 bottle of beer!\nTake one down, pass it around, no bottles of beer on the wall!"
+"""
+
+# Shannon's method: Using range() and a loop, print out the song.
+
+beers = range(3,100) #update to 99 after debugging
+beers.reverse()
+#print beers
+
+for i in beers:
+     print "%s bottles of beer on the wall, %s bottles of beer!\nTake one down, pass it around, %s bottles of beer on the wall!" %(i,i,(i-1))
+print "2 bottles of beer on the wall, 2 bottles of beer!\nTake one down, pass it around, 1 bottle of beer on the wall!"
+print "1 bottle of beer on the wall, 1 bottle of beer!\nTake one down, pass it around, no bottles of beer on the wall!"
